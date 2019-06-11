@@ -12,7 +12,13 @@ $(document).ready(function() {
       method: 'GET'
     }).then(res => {
       res = JSON.parse(res)
-      console.log(res.message.body.artist_list)
+      const artistList = res.message.body.artist_list
+      console.log(artistList)
+      for (let i = 0; i < artistList.length; i++) {
+        $('#artistQueryList').append(
+          `<li class="list-group-item">${artistList[i].artist.artist_name}</li>`
+        )
+      }
     })
   })
 })
